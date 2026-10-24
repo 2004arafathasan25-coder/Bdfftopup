@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BDFFTOPUP</title>
+<style>
+body{margin:0;background:#10131d;color:white;font-family:Arial,sans-serif}
+header{background:#087bfa;padding:22px;text-align:center;font-size:26px;font-weight:bold}
+main{max-width:430px;margin:25px auto;padding:18px}
+.card{background:#202637;padding:20px;border-radius:14px}
+input,select,button{box-sizing:border-box;width:100%;padding:13px;margin:9px 0;border:0;border-radius:8px;font-size:16px}
+button{background:#087bfa;color:white;font-weight:bold}
+p{color:#cbd5e1}
+</style>
+</head>
+<body>
+<header>💎 BDFFTOPUP</header>
+<main>
+<div class="card">
+<h2>Free Fire Diamond Top Up</h2>
+<p>Player UID লিখুন</p>
+<input id="uid" placeholder="আপনার Free Fire UID">
+<p>ডায়মন্ড প্যাকেজ নির্বাচন করুন</p>
+<select id="pack">
+<option value="50">50 Diamonds — ৳45</option>
+<option value="115">115 Diamonds — ৳90</option>
+<option value="240">240 Diamonds — ৳180</option>
+<option value="610">610 Diamonds — ৳440</option>
+</select>
+<button onclick="order()">অর্ডার করুন</button>
+<p id="msg"></p>
+</div>
+</main>
+<script>
+function order(){
+let uid=document.getElementById('uid').value.trim();
+let pack=document.getElementById('pack');
+if(!uid){alert('আপনার Free Fire UID লিখুন');return;}
+document.getElementById('msg').innerText=
+'আপনার UID: '+uid+' | প্যাকেজ: '+pack.options[pack.selectedIndex].text+
+'। অর্ডার সম্পন্ন করতে বিক্রেতার সঙ্গে যোগাযোগ করুন।';
+}
+</script>
+</body>
+</html>
