@@ -5,42 +5,142 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>BDFFTOPUP</title>
 <style>
-body{margin:0;background:#10131d;color:white;font-family:Arial,sans-serif}
-header{background:#087bfa;padding:22px;text-align:center;font-size:26px;font-weight:bold}
-main{max-width:430px;margin:25px auto;padding:18px}
-.card{background:#202637;padding:20px;border-radius:14px}
-input,select,button{box-sizing:border-box;width:100%;padding:13px;margin:9px 0;border:0;border-radius:8px;font-size:16px}
-button{background:#087bfa;color:white;font-weight:bold}
-p{color:#cbd5e1}
+*{box-sizing:border-box}
+body{margin:0;background:#0b1022;color:white;font-family:Arial,sans-serif;padding-bottom:85px}
+header{background:#111a38;padding:15px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0}
+.logo{background:#42baff;color:#07142b;padding:12px;border-radius:12px;font-weight:bold}
+header h2{font-size:19px;margin:0 8px;flex:1}
+.balance{background:#24345c;padding:10px;border-radius:10px;font-size:12px}
+main{padding:14px;max-width:700px;margin:auto}
+.notice{background:#39301c;color:#ffe18a;padding:12px;border-radius:10px;font-size:13px;margin-bottom:14px}
+.hero{background:linear-gradient(130deg,#123b8a,#318bff);padding:24px 18px;border-radius:20px;position:relative;overflow:hidden}
+.hero h1{font-size:29px;margin:10px 0}
+.hero p{font-size:13px;line-height:1.6}
+.hero button{background:#ffcf4a;border:0;border-radius:9px;padding:12px;font-weight:bold}
+.gem{position:absolute;right:12px;bottom:25px;font-size:62px}
+.shortcuts{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:15px 0}
+.shortcut{background:#182344;border:1px solid #2a385e;border-radius:12px;padding:13px 3px;text-align:center;font-size:11px}
+.shortcut b{display:block;font-size:23px;margin-bottom:7px}
+h2.section{font-size:20px;margin:24px 0 12px}
+.offers,.packages{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.offer{padding:15px;border-radius:14px;background:linear-gradient(140deg,#253d76,#18213e);min-height:110px}
+.offer:nth-child(2){background:linear-gradient(140deg,#553580,#252044)}
+.offer b{font-size:15px}.offer p{font-size:11px;color:#d5dcf1}
+.uidbox,.package{background:#17213f;border:1px solid #2a385e;border-radius:13px;padding:13px;margin-bottom:10px}
+.uidbox label{display:block;font-size:13px;margin-bottom:9px;font-weight:bold}
+input{width:100%;padding:13px;border-radius:9px;border:1px solid #43547e;background:#0c1430;color:white;font-size:16px}
+.package{color:white;text-align:left;min-height:130px;cursor:pointer;margin:0}
+.package.selected{border:2px solid #43d9ff;background:#18365b}
+.diamond{font-size:26px}.qty{display:block;font-weight:bold;margin-top:8px}
+.price{display:block;color:#60dcff;font-weight:bold;margin-top:12px}
+.small{font-size:11px;color:#abb8d8;margin-top:6px}
+#order{width:100%;padding:15px;background:#347fff;color:white;border:0;border-radius:12px;font-size:16px;font-weight:bold;margin-top:14px}
+footer{text-align:center;color:#8e9ab9;font-size:11px;padding:20px}
+nav{position:fixed;bottom:0;left:0;right:0;background:#101831;border-top:1px solid #2a385e;display:grid;grid-template-columns:repeat(5,1fr);padding:9px 2px;z-index:3}
+nav button{background:none;border:0;color:#bac5df;font-size:10px;padding:5px 0}
+nav span{display:block;font-size:20px;margin-bottom:5px}
+#message{display:none;background:#d9f5ff;color:#10203b;padding:12px;border-radius:10px;margin-top:12px;font-size:13px}
+@media(min-width:560px){.packages{grid-template-columns:repeat(3,1fr)}}
 </style>
 </head>
 <body>
-<header>💎 BDFFTOPUP</header>
+<header>
+  <div class="logo">BD</div>
+  <h2>BDFFTOPUP</h2>
+  <div class="balance">💰 ৳0.00</div>
+</header>
+
 <main>
-<div class="card">
-<h2>Free Fire Diamond Top Up</h2>
-<p>Player UID লিখুন</p>
-<input id="uid" placeholder="আপনার Free Fire UID">
-<p>ডায়মন্ড প্যাকেজ নির্বাচন করুন</p>
-<select id="pack">
-<option value="50">50 Diamonds — ৳45</option>
-<option value="115">115 Diamonds — ৳90</option>
-<option value="240">240 Diamonds — ৳180</option>
-<option value="610">610 Diamonds — ৳440</option>
-</select>
-<button onclick="order()">অর্ডার করুন</button>
-<p id="msg"></p>
-</div>
+  <div class="notice">📢 <b>NOTICE:</b> BDFFTOPUP-এ স্বাগতম! UID সঠিকভাবে লিখুন।</div>
+
+  <section class="hero">
+    <div style="font-size:11px;font-weight:bold">WELCOME TO BDFFTOPUP</div>
+    <h1>FREE FIRE<br>DIAMOND TOP UP</h1>
+    <p>আপনার পছন্দের প্যাকেজ বেছে নিন।</p>
+    <button onclick="document.getElementById('uid').focus()">TOP UP NOW ↗</button>
+    <div class="gem">💎</div>
+  </section>
+
+  <div class="shortcuts">
+    <div class="shortcut" onclick="go('packages')"><b>💎</b>FF TOPUP</div>
+    <div class="shortcut" onclick="msg('Airdrop অফার এখনো চালু নয়।')"><b>🎁</b>AIRDROP</div>
+    <div class="shortcut" onclick="msg('Weekly অফার দেখুন নিচে।')"><b>📅</b>WEEKLY</div>
+    <div class="shortcut" onclick="msg('Redeem Code ফিচার এখনো ডেমো।')"><b>🎟️</b>MY CODES</div>
+  </div>
+
+  <h2 class="section">🎉 Special Offers</h2>
+  <div class="offers">
+    <div class="offer" onclick="msg('FF Like অফার এখনো চালু নয়।')">
+      <b>🔥 FF Like</b><p>Special offer</p>
+    </div>
+    <div class="offer" onclick="msg('Redeem Code সেকশন এখনো ডেমো।')">
+      <b>🎟️ Free Redeem Code</b><p>Redeem zone</p>
+    </div>
+  </div>
+
+  <h2 class="section" id="packages">💎 FF Diamond TopUp</h2>
+  <div class="uidbox">
+    <label for="uid">🎮 Free Fire Player UID</label>
+    <input id="uid" type="number" placeholder="আপনার Player UID লিখুন">
+    <p class="small">শুধু Player UID দিন। পাসওয়ার্ড কখনো দেবেন না।</p>
+  </div>
+
+  <div class="packages" id="list"></div>
+  <button id="order" onclick="orderNow()">অর্ডার করুন →</button>
+  <div id="message"></div>
+
+  <p class="small" style="line-height:1.7;text-align:center;margin-top:18px">
+    এটি ডেমো ওয়েবসাইট। বাস্তব পেমেন্ট বা ডায়মন্ড ডেলিভারি চালু নেই।
+    অর্ডার দেওয়ার জন্য এখন কাউকে টাকা পাঠাবেন না।
+  </p>
 </main>
+
+<footer>© <span id="year"></span> BDFFTOPUP</footer>
+
+<nav>
+  <button onclick="goTop()"><span>⌂</span>Home</button>
+  <button onclick="msg('My Orders চালু করতে সার্ভার প্রয়োজন।')"><span>🧾</span>My Orders</button>
+  <button onclick="msg('Add Money এখনো চালু নয়।')"><span>＋</span>Add Money</button>
+  <button onclick="msg('My Codes ফিচার এখনো ডেমো।')"><span>🎟️</span>My Codes</button>
+  <button onclick="msg('Account ফিচার এখনো চালু হয়নি।')"><span>♙</span>My Account</button>
+</nav>
+
 <script>
-function order(){
-let uid=document.getElementById('uid').value.trim();
-let pack=document.getElementById('pack');
-if(!uid){alert('আপনার Free Fire UID লিখুন');return;}
-document.getElementById('msg').innerText=
-'আপনার UID: '+uid+' | প্যাকেজ: '+pack.options[pack.selectedIndex].text+
-'। অর্ডার সম্পন্ন করতে বিক্রেতার সঙ্গে যোগাযোগ করুন।';
+const products=[
+ {name:"50 Diamonds",price:45},
+ {name:"115 Diamonds",price:90},
+ {name:"240 Diamonds",price:180},
+ {name:"355 Diamonds",price:270},
+ {name:"610 Diamonds",price:440},
+ {name:"1240 Diamonds",price:880}
+];
+let selected=-1;
+const list=document.getElementById("list");
+products.forEach((p,i)=>{
+ const b=document.createElement("button");
+ b.className="package";
+ b.innerHTML='<span class="diamond">💎</span><span class="qty">'+p.name+'</span><span class="small">Free Fire TopUp</span><span class="price">৳'+p.price+'</span>';
+ b.onclick=()=>{
+   selected=i;
+   document.querySelectorAll(".package").forEach((el,j)=>el.classList.toggle("selected",i===j));
+ };
+ list.appendChild(b);
+});
+function msg(text){
+ const el=document.getElementById("message");
+ el.textContent=text;
+ el.style.display="block";
+ el.scrollIntoView({behavior:"smooth",block:"nearest"});
 }
+function orderNow(){
+ const uid=document.getElementById("uid").value.trim();
+ if(!/^[0-9]{5,20}$/.test(uid)){msg("সঠিক Player UID লিখুন।");return;}
+ if(selected<0){msg("আগে একটি ডায়মন্ড প্যাকেজ নির্বাচন করুন।");return;}
+ msg(products[selected].name+" — ৳"+products[selected].price+". এটি ডেমো; অর্ডার জমা হয়নি।");
+}
+function go(id){document.getElementById(id).scrollIntoView({behavior:"smooth"});}
+function goTop(){window.scrollTo({top:0,behavior:"smooth"});}
+document.getElementById("year").textContent=new Date().getFullYear();
 </script>
 </body>
-</html>
+                                                        </html>-bowidtththl
